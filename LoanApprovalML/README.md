@@ -40,6 +40,32 @@ bash
 streamlit run streamlit_app.py
 ```
 
+## Deployment to Render
+
+This repository is ready for Render deployment using the included `render.yaml` file.
+
+### Option 1: Blueprint deploy (recommended)
+
+1. Push this project to GitHub.
+2. In Render, click **New +** → **Blueprint**.
+3. Connect your GitHub repository.
+4. Render will detect `render.yaml` and create the web service automatically.
+5. Click **Apply** to deploy.
+
+### Option 2: Manual Web Service setup
+
+If you prefer creating the service manually in Render:
+
+- **Runtime**: Python
+- **Build Command**: `pip install -r requirements.txt`
+- **Start Command**: `streamlit run streamlit_app.py --server.address 0.0.0.0 --server.port $PORT`
+
+### Files added for Render
+
+- `render.yaml` → service definition for Blueprint deployment
+- `.streamlit/config.toml` → Streamlit server defaults
+- `runtime.txt` → Python runtime version
+
 ## Deployment to Streamlit Community Cloud
 
 ### Method 1: Deploy from GitHub
